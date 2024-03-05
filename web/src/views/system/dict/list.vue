@@ -87,7 +87,7 @@
 
       <template #action>
         <n-space>
-          <n-button @click="() => (showModal = false)">取消</n-button>
+          <n-button @click="cancel">取消</n-button>
           <n-button type="info" :loading="formBtnLoading" @click="confirmForm">确定</n-button>
         </n-space>
       </template>
@@ -114,6 +114,7 @@
   }
 
   const props = withDefaults(defineProps<Props>(), { checkedId: 0 });
+  const emit = defineEmits(['update-modal']);
   const typeList = ref<any>([]);
   const rules = {
     label: {
@@ -271,10 +272,14 @@
       }
       formBtnLoading.value = false;
     });
+    emit('update-modal');
   }
 
+  function cancel() {
+    showModal.value = false;
+    emit('update-modal');
+  }
   function handleDelete(record: Recordable) {
-    console.log('点击了删除', record);
     dialog.warning({
       title: '警告',
       content: '你确定要删除？',
@@ -284,9 +289,11 @@
         DeleteData(record).then((_res) => {
           message.success('操作成功');
           reloadTable();
+          emit('update-modal');
         });
       },
       onNegativeClick: () => {
+        emit('update-modal');
         // message.error('取消');
       },
     });

@@ -150,6 +150,7 @@
       'edit-cancel',
       'edit-row-end',
       'edit-change',
+      'addRow',
     ],
     setup(props, { emit }) {
       const deviceHeight = ref(150);
@@ -159,7 +160,6 @@
       const isStriped = ref(false);
       const tableData = ref<Recordable[]>([]);
       const innerPropsRef = ref<Partial<BasicTableProps>>();
-
       const getProps = computed(() => {
         return { ...props, ...unref(innerPropsRef) } as BasicTableProps;
       });
@@ -295,6 +295,7 @@
         tableElRef,
         getBindValues,
         getDataSource,
+        getDataSourceRef,
         densityOptions,
         reload,
         densitySelect,

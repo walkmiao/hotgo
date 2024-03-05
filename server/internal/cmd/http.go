@@ -7,10 +7,6 @@ package cmd
 
 import (
 	"context"
-	"github.com/gogf/gf/v2/frame/g"
-	"github.com/gogf/gf/v2/net/ghttp"
-	"github.com/gogf/gf/v2/os/gcmd"
-	"github.com/gogf/gf/v2/util/gmode"
 	"hotgo/internal/consts"
 	"hotgo/internal/library/addons"
 	"hotgo/internal/library/casbin"
@@ -19,6 +15,11 @@ import (
 	"hotgo/internal/router"
 	"hotgo/internal/service"
 	"hotgo/internal/websocket"
+
+	"github.com/gogf/gf/v2/frame/g"
+	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/os/gcmd"
+	"github.com/gogf/gf/v2/util/gmode"
 )
 
 var (
@@ -62,6 +63,9 @@ var (
 
 				// 注册Api路由
 				router.Api(ctx, group)
+
+				// 注册业务路由
+				router.Business(ctx, group)
 
 				// 注册websocket路由
 				router.WebSocket(ctx, group)

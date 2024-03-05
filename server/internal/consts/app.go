@@ -13,3 +13,7 @@ const (
 	AppWebSocket = "websocket"
 	AppDefault   = "default"
 )
+
+const (
+	Business = "business"
+)

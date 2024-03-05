@@ -1,5 +1,26 @@
 import { Option } from '@/utils/hotgo';
-
+export const customerTabs = [
+  {
+    id: 1,
+    name: '联系人',
+    key: 1,
+  },
+  {
+    id: 2,
+    name: '业务信息',
+    key: 2,
+  },
+  {
+    id: 3,
+    name: '账户信息',
+    key: 3,
+  },
+  {
+    id: 4,
+    name: '合同图片',
+    key: 4,
+  },
+];
 export const switchOptions = [
   {
     value: 1,
